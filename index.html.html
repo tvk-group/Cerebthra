@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cerebthra — Cognitive Intelligence Architecture by SOVRA</title>
+  <meta name="description" content="Cerebthra is the cognitive intelligence architecture of the SOVRA and Entelekron ecosystem, designed for Proof of Thought, MindDAO, neural optimization, and sovereign AI reasoning." />
+  <meta property="og:title" content="Cerebthra — Cognitive Intelligence Architecture" />
+  <meta property="og:description" content="The cognitive intelligence layer behind SOVRA, Proof of Thought, MindDAO, and Entelekron." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f7fbff" />
+  <link rel="canonical" href="https://www.cerebthra.com/" />
+
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --paper: rgba(255,255,255,.78);
+      --paper-strong: #ffffff;
+      --ink: #07111f;
+      --muted: #64748b;
+      --line: rgba(15,23,42,.12);
+      --violet: #6d28d9;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --emerald: #10b981;
+      --dark: #020617;
+      --shadow: 0 28px 90px rgba(15,23,42,.13);
+      --radius: 30px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(109,40,217,.18), transparent 34rem),
+        radial-gradient(circle at 88% 15%, rgba(6,182,212,.18), transparent 34rem),
+        radial-gradient(circle at 48% 60%, rgba(37,99,235,.08), transparent 44rem),
+        linear-gradient(180deg, #ffffff 0%, #f7fbff 48%, #eef7ff 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .36;
+      background-image:
+        linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      z-index: -2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.76);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 950;
+      letter-spacing: -.05em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      position: relative;
+      background: conic-gradient(from 180deg, var(--violet), var(--blue), var(--cyan), var(--emerald), var(--violet));
+      box-shadow: 0 16px 42px rgba(109,40,217,.28);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 2px solid rgba(255,255,255,.9);
+      border-radius: 999px;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 19px;
+      background: #fff;
+      border-radius: 999px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .93rem;
+      font-weight: 750;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      color: white !important;
+      background: var(--dark);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(2,6,23,.16);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mobile-toggle span {
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+      transition: .18s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(18px);
+    }
+
+    .mobile-menu-inner {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      gap: 10px;
+      padding: 16px 0 22px;
+    }
+
+    .mobile-menu a {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: white;
+      font-weight: 850;
+    }
+
+    body.menu-open .mobile-menu { display: block; }
+    body.menu-open .mobile-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.menu-open .mobile-toggle span:nth-child(2) { opacity: 0; }
+    body.menu-open .mobile-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .hero {
+      position: relative;
+      padding: 94px 0 74px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 900;
+      box-shadow: 0 10px 34px rgba(15,23,42,.07);
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 7px rgba(16,185,129,.14);
+    }
+
+    h1 {
+      margin: 24px 0 18px;
+      font-size: clamp(3.1rem, 8.8vw, 7.6rem);
+      line-height: .86;
+      letter-spacing: -.095em;
+      font-weight: 950;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #020617 6%, var(--violet), var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 0 0 22px;
+      max-width: 860px;
+      font-size: clamp(1.36rem, 3vw, 2.45rem);
+      line-height: 1.06;
+      letter-spacing: -.06em;
+      font-weight: 920;
+    }
+
+    .lead {
+      max-width: 730px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.78;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.86);
+      font-weight: 900;
+      transition: .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      color: white;
+      border: none;
+      background: linear-gradient(135deg, var(--violet), var(--blue), var(--cyan));
+      box-shadow: 0 20px 52px rgba(109,40,217,.25);
+    }
+
+    .neural-card {
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 42px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(109,40,217,.28), transparent 12rem),
+        radial-gradient(circle at 72% 25%, rgba(6,182,212,.24), transparent 14rem),
+        radial-gradient(circle at 30% 78%, rgba(16,185,129,.16), transparent 15rem),
+        rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+    }
+
+    .neural-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(15,23,42,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black, transparent 76%);
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 70px;
+      border: 1px solid rgba(37,99,235,.22);
+      border-radius: 999px;
+      animation: rotate 18s linear infinite;
+    }
+
+    .orbit.two {
+      inset: 110px 54px;
+      border-color: rgba(109,40,217,.20);
+      animation-duration: 26s;
+      animation-direction: reverse;
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .node {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid var(--blue);
+      box-shadow: 0 0 34px rgba(37,99,235,.52);
+      z-index: 2;
+    }
+    .n1 { left: 18%; top: 24%; }
+    .n2 { left: 48%; top: 14%; border-color: var(--violet); }
+    .n3 { right: 18%; top: 34%; border-color: var(--cyan); }
+    .n4 { left: 34%; bottom: 22%; border-color: var(--emerald); }
+    .n5 { right: 30%; bottom: 18%; border-color: var(--violet); }
+
+    .neural-title {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 3;
+      padding: 22px;
+      border-radius: 26px;
+      color: white;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(2,6,23,.92);
+      box-shadow: 0 20px 60px rgba(2,6,23,.28);
+    }
+
+    .neural-title strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+      letter-spacing: -.04em;
+    }
+
+    .neural-title p {
+      margin: 0;
+      color: #cbd5e1;
+      line-height: 1.65;
+    }
+
+    section { padding: 84px 0; }
+
+    .section-head {
+      max-width: 830px;
+      margin-bottom: 36px;
+    }
+
+    .kicker {
+      margin-bottom: 12px;
+      color: var(--violet);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .8rem;
+      font-weight: 950;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4.4vw, 4rem);
+      line-height: .98;
+      letter-spacing: -.07em;
+      font-weight: 950;
+    }
+
+    .section-text {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .statement {
+      padding: 38px;
+      border-radius: 32px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .statement.big {
+      color: white;
+      background: linear-gradient(135deg, var(--violet), var(--blue));
+    }
+
+    .statement h3 {
+      margin: 0 0 16px;
+      font-size: 1.7rem;
+      line-height: 1.08;
+      letter-spacing: -.05em;
+    }
+
+    .statement p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .statement.big p { color: rgba(255,255,255,.86); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 232px;
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 16px 50px rgba(15,23,42,.08);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      color: var(--violet);
+      font-weight: 950;
+      background: linear-gradient(135deg, rgba(109,40,217,.12), rgba(6,182,212,.12));
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.13rem;
+      letter-spacing: -.035em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+      font-size: .96rem;
+    }
+
+    .dark-band {
+      padding: 58px;
+      border-radius: 46px;
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(109,40,217,.25), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(6,182,212,.22), transparent 34rem),
+        #020617;
+      box-shadow: var(--shadow);
+    }
+
+    .dark-band p,
+    .dark-band .section-text { color: #aebbd0; }
+
+    .stack {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .layers {
+      display: grid;
+      gap: 12px;
+    }
+
+    .layer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.055);
+    }
+
+    .layer span:first-child { font-weight: 900; }
+    .layer span:last-child {
+      color: #93c5fd;
+      font-size: .86rem;
+      font-weight: 850;
+      text-align: right;
+    }
+
+    .timeline { display: grid; gap: 16px; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: white;
+      box-shadow: 0 14px 42px rgba(15,23,42,.07);
+    }
+
+    .step strong { color: var(--violet); }
+    .step h3 { margin: 0 0 8px; letter-spacing: -.035em; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.68; }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 28px;
+      padding: 58px;
+      border-radius: 44px;
+      color: white;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.22), transparent 25rem),
+        linear-gradient(135deg, #020617, #312e81 58%, #155e75);
+      box-shadow: var(--shadow);
+    }
+
+    .cta p { color: #cbd5e1; line-height: 1.75; }
+    .cta .btn { color: white; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.18); }
+    .cta .btn.primary { background: linear-gradient(135deg, var(--violet), var(--cyan)); }
+
+    footer {
+      padding: 40px 0 56px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .split, .stack, .cta { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: inline-flex; }
+      .dark-band, .cta { padding: 34px; border-radius: 32px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1200px); }
+      .hero { padding-top: 56px; }
+      h1 { font-size: clamp(3rem, 17vw, 5rem); }
+      .cards { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .step { grid-template-columns: 1fr; }
+      .footer-row { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand" aria-label="Cerebthra home">
+        <span class="brand-mark"></span>
+        <span>Cerebthra</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#architecture">Architecture</a>
+        <a href="#modules">Modules</a>
+        <a href="#proof">Proof of Thought</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+
+      <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-mobile-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" data-mobile-menu>
+      <div class="mobile-menu-inner">
+        <a href="#architecture">Architecture</a>
+        <a href="#modules">Modules</a>
+        <a href="#proof">Proof of Thought</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> Cognitive Layer of SOVRA</div>
+          <h1 class="gradient-text">Cerebthra</h1>
+          <p class="subtitle">The cognitive intelligence architecture for sovereign AI reasoning.</p>
+          <p class="lead">
+            Cerebthra is the neural reasoning and cognitive optimization layer of the SOVRA and Entelekron ecosystem. It connects structured thought, memory, governance, Proof of Thought, and intelligent execution into one expandable cognitive framework.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#architecture">Explore Architecture →</a>
+            <a class="btn" href="#proof">Proof of Thought</a>
+            <a class="btn" href="https://www.sovra.network/">SOVRA Network</a>
+          </div>
+        </div>
+
+        <aside class="neural-card" aria-label="Cerebthra neural system visual">
+          <span class="orbit"></span>
+          <span class="orbit two"></span>
+          <span class="node n1"></span>
+          <span class="node n2"></span>
+          <span class="node n3"></span>
+          <span class="node n4"></span>
+          <span class="node n5"></span>
+          <div class="neural-title">
+            <strong>Cognitive Runtime / Online</strong>
+            <p>Reasoning, memory, validation, governance, and neural optimization connected through the SOVRA intelligence core.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="container split">
+        <div class="statement big">
+          <h3>Cerebthra is not a chatbot. It is a cognitive architecture.</h3>
+          <p>Its purpose is to structure how AI systems reason, remember, evaluate, coordinate, and contribute to sovereign digital ecosystems.</p>
+        </div>
+        <div class="statement">
+          <h3>Built for the Entelekron era</h3>
+          <p>Cerebthra supports SOVRA Core, MindDAO, Proof of Thought, GraphVAULT, ChronoSEAL, validator intelligence, and future human-AI interfaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Core Modules</div>
+          <h2>A neural framework for reasoning, governance, and execution.</h2>
+          <p class="section-text">Cerebthra transforms intelligence into structured cognitive layers that can be monitored, improved, verified, and connected to real systems.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card"><div class="icon">01</div><h3>Reasoning Cortex</h3><p>Multi-step reasoning logic for planning, analysis, decision support, and strategic execution.</p></article>
+          <article class="card"><div class="icon">02</div><h3>Memory Synapse</h3><p>Knowledge linking layer for long-term context, graph memory, vector retrieval, and semantic continuity.</p></article>
+          <article class="card"><div class="icon">03</div><h3>Proof of Thought</h3><p>Validation concept for measuring useful reasoning, cognitive contribution, and intelligent participation.</p></article>
+          <article class="card"><div class="icon">04</div><h3>MindDAO Interface</h3><p>Governance pathway for collective cognition, proposal reasoning, voting logic, and AI-assisted coordination.</p></article>
+          <article class="card"><div class="icon">05</div><h3>Neural Optimizer</h3><p>Adaptive model and workflow improvement layer for better decisions, lower noise, and stronger signal quality.</p></article>
+          <article class="card"><div class="icon">06</div><h3>SOVRA Bridge</h3><p>Direct connection to SOVRA Core, Entelekron modules, infrastructure APIs, and future autonomous agents.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof">
+      <div class="container">
+        <div class="dark-band stack">
+          <div>
+            <div class="kicker">Proof of Thought</div>
+            <h2>A future contribution model based on intelligence, not only capital.</h2>
+            <p class="section-text">Cerebthra introduces a framework where useful reasoning, validated contribution, knowledge generation, and system improvement can become part of governance and reward logic.</p>
+          </div>
+          <div class="layers">
+            <div class="layer"><span>Thought Quality</span><span>Reasoning Score</span></div>
+            <div class="layer"><span>Knowledge Contribution</span><span>Graph / Memory</span></div>
+            <div class="layer"><span>Validation</span><span>ChronoSEAL / Audit</span></div>
+            <div class="layer"><span>Governance</span><span>MindDAO</span></div>
+            <div class="layer"><span>Execution</span><span>SOVRA Agents</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usecases">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Use Cases</div>
+          <h2>Designed for systems that must think before they act.</h2>
+          <p class="section-text">Cerebthra is a foundational layer for AI governance, research, security, blockchain operations, autonomous agents, and cognitive decision systems.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card"><div class="icon">AI</div><h3>Sovereign AI Reasoning</h3><p>Structured intelligence pipelines for SOVRA-powered agents, dashboards, and command systems.</p></article>
+          <article class="card"><div class="icon">DAO</div><h3>MindDAO Governance</h3><p>AI-supported governance that uses reasoning, validation, and collective cognitive contribution.</p></article>
+          <article class="card"><div class="icon">SEC</div><h3>Security & Forensics</h3><p>Support for EnteleCLOS-style cyber defense, wallet recovery analysis, and evidence mapping.</p></article>
+          <article class="card"><div class="icon">GV</div><h3>GraphVAULT Knowledge</h3><p>Semantic knowledge mapping for events, entities, documents, decisions, and relationships.</p></article>
+          <article class="card"><div class="icon">VAL</div><h3>Validator Intelligence</h3><p>Cognitive monitoring and node decision support for Entelekron validator systems.</p></article>
+          <article class="card"><div class="icon">H-AI</div><h3>Human-AI Interfaces</h3><p>Future pathways for thought-actuated, voice-driven, and emotionally aware intelligence layers.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Roadmap</div>
+          <h2>From cognitive framework to sovereign intelligence layer.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="step"><strong>Phase 01</strong><div><h3>Concept & Architecture</h3><p>Define Cerebthra’s role inside SOVRA, Entelekron, MindDAO, and Proof of Thought.</p></div></div>
+          <div class="step"><strong>Phase 02</strong><div><h3>Prototype Runtime</h3><p>Build reasoning workflows, memory structures, scoring logic, and dashboard interfaces.</p></div></div>
+          <div class="step"><strong>Phase 03</strong><div><h3>Governance Integration</h3><p>Connect proposal reasoning, validator intelligence, and cognitive contribution scoring.</p></div></div>
+          <div class="step"><strong>Phase 04</strong><div><h3>Ecosystem Expansion</h3><p>Integrate with GraphVAULT, ChronoSEAL, EnteleCLOS, SOVRA Voice, and future neural modules.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="kicker">Cerebthra Network</div>
+            <h2>Build the cognitive layer of sovereign AI.</h2>
+            <p>For research partners, AI infrastructure providers, governance builders, and strategic collaborators inside the SOVRA and Entelekron ecosystem.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="mailto:team@cerebthra.com">Contact Cerebthra</a>
+            <a class="btn" href="https://www.sovra.network/">SOVRA Network</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Cerebthra | A SOVRA / Entelekron Cognitive Intelligence Module.</div>
+      <div><a href="https://www.sovra.network/">SOVRA</a> · <a href="https://www.cerebthra.com/">Cerebthra</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.querySelector('[data-mobile-toggle]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = document.body.classList.toggle('menu-open');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          document.body.classList.remove('menu-open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
